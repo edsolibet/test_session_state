@@ -35,6 +35,6 @@ if __name__ == '__main__':
         st.write('time_update hour: {}'.format(st.session_state['time_update'].hour))
         st.write('time_now hour: {}'.format(time_now))
         
-        if time_now.hour == st.session_state['time_update'].hour:
+        if (time_now.hour+8) % 24 == st.session_state['time_update'].hour:
             update()
             st.write('Code rerun.')
