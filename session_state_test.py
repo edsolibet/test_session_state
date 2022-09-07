@@ -24,9 +24,8 @@ if 'time_update' not in st.session_state:
     
 t = st.sidebar.time_input('Set app to update at: ', dt.time(3,0, tzinfo=phtime))
 st.session_state['time_update'] = t
-
+st.write(st.session_state)
 # refresh every hour
-
 time_now = phtime.localize(datetime.now())
 #time.sleep(3600)
 
