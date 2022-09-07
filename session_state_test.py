@@ -33,7 +33,7 @@ if __name__ == '__main__':
         st.write(st.session_state)
         #time.sleep(3600)
         st.write('time_update hour: {}'.format(st.session_state['time_update'].hour))
-        st.write('time_now hour: {}'.format((time_now.hour + 8) % 24)
+        st.write('time_now hour: {}'.format((time_now.hour + 8) % 24))
         
         if (time_now.hour+8) % 24 == st.session_state['time_update'].hour:
             update()
