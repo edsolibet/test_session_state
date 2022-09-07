@@ -32,6 +32,8 @@ if __name__ == '__main__':
         time_now = phtime.localize(datetime.now())
         st.write(st.session_state)
         #time.sleep(3600)
+        st.write('time_update hour: {}'.format(st.session_state['time_update'].hour))
+        st.write('time_now hour: {}'.format(time_now.hour))
         
         if time_now.hour == st.session_state['time_update'].hour:
             update()
