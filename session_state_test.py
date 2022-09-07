@@ -30,6 +30,7 @@ if __name__ == '__main__':
     # refresh every hour
         time.sleep(10)
         time_now = phtime.localize(datetime.now())
+        st.write(st.session_state)
         #time.sleep(3600)
         
         if time_now.hour == st.session_state['time_update'].hour:
