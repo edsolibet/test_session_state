@@ -10,7 +10,6 @@ import re, time
 import datetime as dt
 from datetime import datetime 
 from pytz import timezone
-import gspread
 import streamlit as st
 
 phtime = timezone('Asia/Manila')
@@ -19,16 +18,20 @@ def update():
     st.experimental_memo.clear()
     st.experimental_rerun()
 
-if 'time_update' not in st.session_state:
-    st.session_state['time_update'] = dt.time(3,0, tzinfo=phtime)
-    
-t = st.sidebar.time_input('Set app to update at: ', dt.time(3,0, tzinfo=phtime))
-st.session_state['time_update'] = t
-st.write(st.session_state)
-# refresh every hour
-time_now = phtime.localize(datetime.now())
-#time.sleep(3600)
 
-if time_now.hour == st.session_state['time_update'].hour:
-    update()
-    st.write('Code rerun.')
+if __name__ == '__main__':
+    if 'time_update' not in st.session_state:
+        st.session_state['time_update'] = dt.time(3,0, tzinfo=phtime)
+        
+    t = st.sidebar.time_input('Set app to update at: ', dt.time(3,0, tzinfo=phtime))
+    st.session_state['time_update'] = t
+
+    while True:
+    # refresh every hour
+        time.sleep(10)
+        time_now = phtime.localize(datetime.now())
+        #time.sleep(3600)
+        
+        if time_now.hour == st.session_state['time_update'].hour:
+            update()
+            st.write('Code rerun.')
